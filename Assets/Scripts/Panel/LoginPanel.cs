@@ -11,56 +11,61 @@ public class LoginPanel : BasePanel
     public Toggle togAutoLogin;
     public InputField inputAccount;
     public InputField inputPassword;
-    private LoginData loginData;
     public override void Init()
     {
-        loginData=LoginMgr.Instance.LoginData;
-        inputAccount.text = loginData.userAccount == "" ? "请输入账号" : loginData.userAccount;
-        inputPassword.text = loginData.rememberPassword ? loginData.password : "请输入密码";
-        togRememberPassword.isOn = loginData.rememberPassword;
-        togAutoLogin.isOn = loginData.autoLogin;
+        //一开始要根据加载出来的loginData去显示面板内容
+        togRememberPassword.isOn = LoginMgr.Instance.LoginData.rememberPassword;
+        togAutoLogin.isOn = LoginMgr.Instance.LoginData.autoLogin;
+
+        inputAccount.text = LoginMgr.Instance.LoginData.userAccount == "" ?
+        "请输入账号" : LoginMgr.Instance.LoginData.userAccount;
+
+        if (togRememberPassword.isOn && LoginMgr.Instance.LoginData.password != "")
+            inputPassword.text = LoginMgr.Instance.LoginData.password;
+        else
+            inputPassword.text = "请输入密码";
 
         btnRegister.onClick.AddListener(() =>
         {
-
             UIMgr.Instance.HidePanel<LoginPanel>();
         });
 
         btnSure.onClick.AddListener(() =>
         {
-            JsonMgr.Instance.SaveData(loginData,"loginData");
+            //暂时先这样 实际上肯定是得先检测账号密码是否正确再保存
+            SaveLoginData();
             UIMgr.Instance.HidePanel<LoginPanel>();
         });
 
         togRememberPassword.onValueChanged.AddListener((isON) =>
         {
-            loginData.rememberPassword = isON;
             if (!isON)
-            {
                 togAutoLogin.isOn = false;
-                loginData.autoLogin = false;
-            }
         });
 
         togAutoLogin.onValueChanged.AddListener((isOn) =>
         {
-            loginData.autoLogin = isOn;
             if (isOn)
-            {
                 togRememberPassword.isOn = true;
-                loginData.rememberPassword= true;
-            }
         });
 
         inputAccount.onValueChanged.AddListener((value) =>
         {
-            loginData.userAccount = value;
+
         });
 
         inputPassword.onValueChanged.AddListener((value) =>
         {
-            loginData.password = value;
+
         });
     }
 
+    private void SaveLoginData()
+    {
+        LoginMgr.Instance.LoginData.rememberPassword = togRememberPassword.isOn;
+        LoginMgr.Instance.LoginData.autoLogin=togAutoLogin.isOn;
+        LoginMgr.Instance.LoginData.userAccount = inputAccount.text;
+        LoginMgr.Instance.LoginData.password = inputPassword.text;
+        JsonMgr.Instance.SaveData(LoginMgr.Instance.LoginData, "loginData");
+    }
 }
