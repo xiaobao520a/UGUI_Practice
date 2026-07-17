@@ -28,13 +28,21 @@ public class LoginPanel : BasePanel
         btnRegister.onClick.AddListener(() =>
         {
             UIMgr.Instance.HidePanel<LoginPanel>();
+            UIMgr.Instance.ShowPanel<RegisterPanel>();
         });
 
         btnSure.onClick.AddListener(() =>
         {
-            //暂时先这样 实际上肯定是得先检测账号密码是否正确再保存
-            SaveLoginData();
-            UIMgr.Instance.HidePanel<LoginPanel>();
+            if (LoginMgr.Instance.LoginRight(inputAccount.text, inputPassword.text))
+            {
+                SaveLoginData();
+                UIMgr.Instance.HidePanel<LoginPanel>();
+            }
+            else
+            {
+                inputAccount.text = "";
+                inputPassword.text = "";
+            }
         });
 
         togRememberPassword.onValueChanged.AddListener((isON) =>
@@ -49,15 +57,7 @@ public class LoginPanel : BasePanel
                 togRememberPassword.isOn = true;
         });
 
-        inputAccount.onValueChanged.AddListener((value) =>
-        {
-
-        });
-
-        inputPassword.onValueChanged.AddListener((value) =>
-        {
-
-        });
+        
     }
 
     private void SaveLoginData()
@@ -67,5 +67,13 @@ public class LoginPanel : BasePanel
         LoginMgr.Instance.LoginData.userAccount = inputAccount.text;
         LoginMgr.Instance.LoginData.password = inputPassword.text;
         JsonMgr.Instance.SaveData(LoginMgr.Instance.LoginData, "loginData");
+    }
+
+    public void SetInfo(string userAccount,string password)
+    {
+        inputAccount.text = userAccount;
+        inputPassword.text = password;
+        LoginMgr.Instance.LoginData.userAccount=userAccount;
+        LoginMgr.Instance.LoginData.password=password;
     }
 }

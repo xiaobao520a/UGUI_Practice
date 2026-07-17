@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 1588190074758254514}
   - component: {fileID: 338971841918678170}
   m_Layer: 5
-  m_Name: BtnSure
+  m_Name: BtnRegister
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,6 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2514897546060132470}
   - component: {fileID: 5530156253450937527}
+  - component: {fileID: 320654681769815686}
   m_Layer: 5
   m_Name: RegisterPanel
   m_TagString: Untagged
@@ -817,6 +818,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4275326059960706824}
   m_CullTransparentMesh: 1
+--- !u!114 &320654681769815686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275326059960706824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e1944c3d226cf4b86ff11c258b445e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputAccount: {fileID: 6809524271651413096}
+  inputPassword: {fileID: 2616439876627471585}
+  btnCancel: {fileID: 5479241386024996283}
+  btnRegister: {fileID: 338971841918678170}
 --- !u!1 &5606058921343862213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1106,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u786E\u5B9A"
+  m_Text: "\u6CE8\u518C"
 --- !u!1 &7496021573898470225
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,16 +12,7 @@ public class RegisterPanel : BasePanel
     public Button btnRegister;
     public override void Init()
     {
-        inputAccount.onValueChanged.AddListener((str) =>
-        {
-
-        });
-
-        inputPassword.onValueChanged.AddListener((str) =>
-        {
-
-        });
-
+        
         btnCancel.onClick.AddListener(() =>
         {
             UIMgr.Instance.HidePanel<RegisterPanel>();
@@ -30,7 +21,29 @@ public class RegisterPanel : BasePanel
 
         btnRegister.onClick.AddListener(() =>
         {
+            if(inputAccount.text.Length>6||inputPassword.text.Length>6)
+            {
+                UIMgr.Instance.ShowPanel<TipPanel>().ChangeText("账号或密码不能超过六位");
+                inputAccount.text = "";
+                inputPassword.text = "";
+            }
+            else
+            {
+                if(LoginMgr.Instance.Register(inputAccount.text,inputPassword.text))
+                {
+                    UIMgr.Instance.HidePanel<RegisterPanel>();
+                    LoginPanel loginPanel = UIMgr.Instance.ShowPanel<LoginPanel>();
+                    loginPanel.SetInfo(inputAccount.text, inputPassword.text);
+                    UIMgr.Instance.ShowPanel<TipPanel>().ChangeText("注册成功");
 
+                }
+                else
+                {
+                    UIMgr.Instance.ShowPanel<TipPanel>().ChangeText("注册失败,账号已存在");
+                    inputAccount.text = "";
+                    inputPassword.text = "";
+                }
+            }
 
         });
     }
