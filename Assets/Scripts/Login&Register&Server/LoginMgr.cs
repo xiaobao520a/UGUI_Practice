@@ -18,6 +18,7 @@ public class LoginMgr
     {
         loginData=JsonMgr.Instance.LoadData<LoginData>("loginData");
         registerData = JsonMgr.Instance.LoadData<RegisterData>("registerData");
+        serverData = JsonMgr.Instance.LoadData<List<ServerInfo>>("serverData");
     }
 
     private LoginData loginData;
@@ -25,6 +26,9 @@ public class LoginMgr
 
     private RegisterData registerData;
     public RegisterData RegisterData => registerData;
+
+    private List<ServerInfo> serverData;
+    public List<ServerInfo> ServerData => serverData;
 
     public void SaveLoginData()
     {

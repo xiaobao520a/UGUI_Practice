@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 13
   m_Viewport: {fileID: 1168214304}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 310749759}
   - component: {fileID: 310749758}
   m_Layer: 5
-  m_Name: ImgHot
+  m_Name: ImgLastLoginStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 1383965865}
   - component: {fileID: 1383965864}
   m_Layer: 5
-  m_Name: TextLastLogin
+  m_Name: TextLastLoginName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 13
   m_Viewport: {fileID: 2088216284}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
