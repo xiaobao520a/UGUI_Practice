@@ -13,7 +13,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UIMgr.Instance.ShowPanel<LoginPanel>();
+            UIMgr.Instance.ShowPanel<ServerPanel>();
         }
 
         

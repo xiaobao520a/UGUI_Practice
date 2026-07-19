@@ -8,4 +8,6 @@ public class LoginData
     public string password;
     public bool rememberPassword;
     public bool autoLogin;
+
+    public int ServerID=-1; //-1代表还没选服
 }

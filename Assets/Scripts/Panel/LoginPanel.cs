@@ -37,6 +37,14 @@ public class LoginPanel : BasePanel
             {
                 SaveLoginData();
                 UIMgr.Instance.HidePanel<LoginPanel>();
+                if(LoginMgr.Instance.LoginData.ServerID==-1)
+                {
+
+                }
+                else
+                {
+                    UIMgr.Instance.ShowPanel<ServerPanel>();
+                }
             }
             else
             {
